@@ -1,8 +1,13 @@
 package kata.odde.com;
 
-public class TennesGame {
+import java.util.ArrayList;
 
-    public TennesGame() {
+public class TennisGame {
+    public ArrayList<Integer> score;
 
+    public TennisGame() {
+        this.score = new ArrayList<>();
+        this.score.add(0);
+        this.score.add(0);
     }
 }

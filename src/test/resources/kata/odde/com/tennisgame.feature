@@ -1,5 +1,5 @@
 Feature: Tennis Game
 
-    Scenario: Test
-    Given 1 and 2
-    Then should get 3
+   Scenario: Start a new game
+        Given two players Tom and Jerry
+        Then both of them have 0 score
