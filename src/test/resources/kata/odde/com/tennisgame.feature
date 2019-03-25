@@ -17,3 +17,7 @@ Feature: Tennis Game
    Scenario: Tom win the second point
     When Tom get 2 point(s)
     Then Tom score is 30
+
+   Scenario: Tom win the third point
+    When Tom get 3 point(s)
+    Then Tom score is 40

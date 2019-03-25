@@ -34,12 +34,12 @@ public class TennisGame {
 
     public class Player {
         private String _name;
-        private Integer _score;
+        private Integer[] _score;
         private Integer _wonPoints;
 
         public Player(String name) {
             this._name = name;
-            this._score = 0;
+            this._score = new Integer[] {15, 30, 40};
             this._wonPoints = 0;
         }
 
@@ -48,12 +48,11 @@ public class TennisGame {
         }
 
         public int getScore() {
-            return _score;
+            return _wonPoints == 0 ? 0 : _score[_wonPoints-1];
         }
 
         public void winOnePoint() {
            _wonPoints++;
-           _score = _wonPoints * 15;
         }
     }
 }
