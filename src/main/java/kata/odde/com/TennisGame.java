@@ -33,7 +33,7 @@ public class TennisGame {
 
    }
 
-    private Player getPlayerByName(String name) {
+    public Player getPlayerByName(String name) {
         for (Player player : this._players) {
             if (player.getName().equals(name)) {
                 return player;
@@ -57,12 +57,12 @@ public class TennisGame {
 
     public class Player {
         private String _name;
-        private Integer[] _score;
+        private String[] _score;
         private Integer _wonPoints;
 
         public Player(String name) {
             this._name = name;
-            this._score = new Integer[] {0, 15, 30, 40};
+            this._score = new String[] {"0", "15", "30", "40", "Deuce"};
             this._wonPoints = 0;
         }
 
@@ -70,8 +70,8 @@ public class TennisGame {
             return _name;
         }
 
-        public int getScore() {
-            return _score[_wonPoints];
+        public String getScore() {
+            return _score[_wonPoints].toString();
         }
 
         public void winOnePoint() {

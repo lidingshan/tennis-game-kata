@@ -33,12 +33,6 @@ public class TennisGameSteps {
         game.addPlayer(player2);
     }
 
-    @And("^both of them should have score (\\d+)$")
-    public void both_of_them_should_have_score(int arg1) throws Throwable {
-        Assert.assertEquals(0, game.getPlayer(0).getScore());
-        Assert.assertEquals(0, game.getPlayer(1).getScore());
-    }
-
     @And("^the game should have two players \"(.*?)\" an \"(.*?)\"$")
     public void the_game_should_have_two_players_an(String name1, String name2) throws Throwable {
         Assert.assertEquals(name1, game.getPlayer(0).getName());
@@ -57,9 +51,9 @@ public class TennisGameSteps {
             game.addOnePointToPlayer(playerName);
     }
 
-    @Then("^Tom score is (\\d+)$")
-    public void tom_score_is(int score) throws Throwable {
-        Assert.assertEquals(score, game.getPlayer(0).getScore());
+    @Then("^(.*?) score should be (.*?)$")
+    public void player_score_is(String name, String score) throws Throwable {
+        Assert.assertEquals(score, game.getPlayerByName(name).getScore());
     }
 
     @Then("^the winner should be (.*?)$")
