@@ -69,7 +69,7 @@ public class TennisGameSteps {
 
     @Then("^the winner should not be (.*?)$")
     public void the_winner_should_not_be(String name) throws Throwable {
-        Assert.assertNotEquals(name, game.getWinnerName());
+        Assert.assertEquals(name, game.getWinnerName());
     }
 
 }

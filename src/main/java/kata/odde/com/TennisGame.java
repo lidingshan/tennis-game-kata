@@ -47,7 +47,7 @@ public class TennisGame {
         Player player1 = _players.get(0);
         Player player2 = _players.get(1);
 
-        String winnerName = "";
+        String winnerName = "unknown";
         if (Math.abs(player1.getWonPoints() - player2.getWonPoints()) >=2 ) {
             winnerName = player1.getWonPoints() > player2.getWonPoints() ? player1.getName() : player2.getName();
         }

@@ -31,8 +31,8 @@ Feature: Tennis Game
     And Tom get 2 point(s)
     Then the winner should be Jerry
 
-   Scenario: No winner when the difference is less then 2 points
+   Scenario: Winner must win 2 points at least
     When Jerry get 4 point(s)
     And Tom get 3 point(s)
-    Then the winner should not be Jerry
+    Then the winner should be unknown
 
