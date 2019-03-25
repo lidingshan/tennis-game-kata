@@ -51,15 +51,25 @@ public class TennisGameSteps {
         game.addPlayer(name2);
     }
 
-    @When("^Tom get (\\d+) point\\(s\\)$")
-    public void tom_get_one_point(int point) throws Throwable {
+    @When("^(.*?) get (\\d+) point\\(s\\)$")
+    public void a_player_get_one_point(String playerName, int point) throws Throwable {
         for(int i = 0; i < point; i++)
-            game.addOnePointToPlayer(0);
+            game.addOnePointToPlayer(playerName);
     }
 
     @Then("^Tom score is (\\d+)$")
     public void tom_score_is(int score) throws Throwable {
         Assert.assertEquals(score, game.getPlayer(0).getScore());
+    }
+
+    @Then("^the winner should be (.*?)$")
+    public void the_winner_should_be(String winner) throws Throwable {
+        Assert.assertEquals(winner, game.getWinnerName());
+    }
+
+    @Then("^the winner should not be (.*?)$")
+    public void the_winner_should_not_be(String name) throws Throwable {
+        Assert.assertNotEquals(name, game.getWinnerName());
     }
 
 }
