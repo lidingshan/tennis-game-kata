@@ -38,8 +38,8 @@ Feature: Tennis Game
     Then the winner should be unknown
 
    Scenario: Two players both have won 4 points
-    When Jerry get 4 point(s)
-    And Tom get 4 point(s)
+    When Jerry get 3 point(s)
+    And Tom get 3 point(s)
     Then Jerry score should be Deuce
     And Tom score should be Deuce
 
@@ -47,3 +47,9 @@ Feature: Tennis Game
     When Tom get 3 point(s)
     And Jerry get 0 point(s)
     Then the winner should be unknown
+
+   Scenario: Deuce will only valid when both scores are 40
+    When Tom get 2 point(s)
+    And Jerry get 2 point(s)
+    Then Jerry score should be 30
+    And Tom score should be 30

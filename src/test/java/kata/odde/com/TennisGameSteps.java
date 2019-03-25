@@ -53,7 +53,7 @@ public class TennisGameSteps {
 
     @Then("^(.*?) score should be (.*?)$")
     public void player_score_is(String name, String score) throws Throwable {
-        Assert.assertEquals(score, game.getPlayerByName(name).getScore());
+        Assert.assertEquals(score, game.getScore(game.getPlayerByName(name)));
     }
 
     @Then("^the winner should be (.*?)$")
