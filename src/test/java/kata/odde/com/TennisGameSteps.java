@@ -27,7 +27,7 @@ public class TennisGameSteps {
         Assert.assertEquals(name, game.getName());
      }
 
-    @Given("^two players (.*?) and (.*?) in the game$")
+    @And("^two players (.*?) and (.*?) in the game$")
     public void two_players_Tom_and_Jerry_in_the_game(String player1, String player2) throws Throwable {
         game.addPlayer(player1);
         game.addPlayer(player2);
@@ -39,7 +39,7 @@ public class TennisGameSteps {
         Assert.assertEquals(0, game.getPlayer(1).getScore());
     }
 
-    @Then("^the game should have two players \"(.*?)\" an \"(.*?)\"$")
+    @And("^the game should have two players \"(.*?)\" an \"(.*?)\"$")
     public void the_game_should_have_two_players_an(String name1, String name2) throws Throwable {
         Assert.assertEquals(name1, game.getPlayer(0).getName());
         Assert.assertEquals(name2, game.getPlayer(1).getName());
@@ -51,9 +51,10 @@ public class TennisGameSteps {
         game.addPlayer(name2);
     }
 
-    @When("^Tom get one point$")
-    public void tom_get_one_point() throws Throwable {
-        game.addOnePointToPlayer(0);
+    @When("^Tom get (\\d+) point\\(s\\)$")
+    public void tom_get_one_point(int point) throws Throwable {
+        for(int i = 0; i < point; i++)
+            game.addOnePointToPlayer(0);
     }
 
     @Then("^Tom score is (\\d+)$")

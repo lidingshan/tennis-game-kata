@@ -35,10 +35,12 @@ public class TennisGame {
     public class Player {
         private String _name;
         private Integer _score;
+        private Integer _wonPoints;
 
         public Player(String name) {
             this._name = name;
             this._score = 0;
+            this._wonPoints = 0;
         }
 
         public String getName() {
@@ -50,7 +52,8 @@ public class TennisGame {
         }
 
         public void winOnePoint() {
-            _score = 15;
+           _wonPoints++;
+           _score = _wonPoints * 15;
         }
     }
 }
