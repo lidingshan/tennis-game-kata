@@ -13,7 +13,7 @@ public class TennisGame {
 
     public TennisGame() {
         this._players = new ArrayList<Player>();
-        this._score = new String[] {"0", "15", "30", "40"};
+        this._score = new String[] {"0", "15", "30", "40", "Advantage"};
     }
 
     public String getName() {
@@ -21,7 +21,7 @@ public class TennisGame {
     }
 
     public void addPlayer(String player_name) {
-        Player newPlayer = new Player(player_name);
+        Player newPlayer = new Player(player_name, this._players.size());
         this._players.add(newPlayer);
     }
 
@@ -34,13 +34,24 @@ public class TennisGame {
         player.winOnePoint();
    }
 
-   public String getScore(Player player) {
-        String score = _score[player.getWonPoints()];
-        if (_players.get(0).getWonPoints() == _players.get(1).getWonPoints()
-                && score == "40") {
-            score = "Deuce";
+   public String getPlayerScore(Player player) {
+
+        Player opposite = this._players.get(_players.size() - player.getIndex() - 1);
+        if (!player.hasAtLeastThreePoints()) {
+            return _score[player.getWonPoints()];
         }
-        return score;
+        if (player.getWonPoints() > opposite.getWonPoints()) {
+            if (player.getWonPoints() - opposite.getWonPoints() == 1) {
+                return "Advantage";
+            } else {
+                return "40";
+            }
+
+        } else if (player.getWonPoints() < opposite.getWonPoints()) {
+            return "40";
+        } else {
+            return "Deuce";
+        }
    }
 
    public Player getPlayerByName(String name) {
@@ -59,7 +70,7 @@ public class TennisGame {
 
         String winnerName = "unknown";
         if (isLeadAtLeastTwoPoints(player1, player2)
-                && (player1.hasMoreThanThreePoints() || player2.hasMoreThanThreePoints())) {
+                && (player1.getWonPoints()>3 || player2.getWonPoints()>3)) {
             winnerName = player1.getWonPoints() > player2.getWonPoints() ? player1.getName() : player2.getName();
         }
 
@@ -74,9 +85,12 @@ public class TennisGame {
         private String _name;
         private Integer _wonPoints;
 
-        public Player(String name) {
+        private Integer _index;
+
+        public Player(String name, Integer index) {
             this._name = name;
             this._wonPoints = 0;
+            this._index = index;
         }
 
         public String getName() {
@@ -92,8 +106,12 @@ public class TennisGame {
             return _wonPoints;
         }
 
-        public boolean hasMoreThanThreePoints() {
-            return _wonPoints > 3;
+        public boolean hasAtLeastThreePoints() {
+            return _wonPoints >= 3;
+        }
+
+        public Integer getIndex() {
+            return _index;
         }
     }
 }

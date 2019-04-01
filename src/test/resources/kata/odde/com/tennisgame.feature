@@ -8,6 +8,7 @@ Feature: Tennis Game
    Scenario: New Game
     Then the game name should be "ATO Game 1"
     And the game should have two players "Tom" an "Jerry"
+    And Jerry index is 1
     And Tom score should be 0
     And Jerry score should be 0
 
@@ -23,11 +24,7 @@ Feature: Tennis Game
     When Tom get 3 point(s)
     Then Tom score should be 40
 
-   Scenario: Tom win the game
-    When Tom get 4 point(s)
-    Then the winner should be Tom
-
-   Scenario: Jerry win the game
+   Scenario: Win the game when get the forth point
     When Jerry get 4 point(s)
     And Tom get 2 point(s)
     Then the winner should be Jerry
@@ -53,3 +50,22 @@ Feature: Tennis Game
     And Jerry get 2 point(s)
     Then Jerry score should be 30
     And Tom score should be 30
+
+   Scenario: Take lead in deuce
+    When Tom get 4 point(s)
+    And Jerry get 3 point(s)
+    Then Tom score should be Advantage
+    And Jerry score should be 40
+
+   Scenario: Back to deuce
+    When Tom get 4 point(s)
+    And Jerry get 4 point(s)
+    Then Tom score should be Deuce
+    And Jerry score should be Deuce
+
+   Scenario: Take lead in deuce again
+    When Tom get 5 point(s)
+    And Jerry get 5 point(s)
+    And Tom get 1 point(s)
+    Then Tom score should be Advantage
+    And Jerry score should be 40

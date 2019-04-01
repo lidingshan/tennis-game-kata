@@ -53,7 +53,7 @@ public class TennisGameSteps {
 
     @Then("^(.*?) score should be (.*?)$")
     public void player_score_is(String name, String score) throws Throwable {
-        Assert.assertEquals(score, game.getScore(game.getPlayerByName(name)));
+        Assert.assertEquals(score, game.getPlayerScore(game.getPlayerByName(name)));
     }
 
     @Then("^the winner should be (.*?)$")
@@ -64,6 +64,12 @@ public class TennisGameSteps {
     @Then("^the winner should not be (.*?)$")
     public void the_winner_should_not_be(String name) throws Throwable {
         Assert.assertEquals(name, game.getWinnerName());
+    }
+
+    @Then("^(.*?) index is (\\d+)$")
+    public void player_index_is(String name, int index) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        Assert.assertEquals(index, game.getPlayerByName(name).getIndex().intValue());
     }
 
 }
