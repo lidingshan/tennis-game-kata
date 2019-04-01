@@ -32,29 +32,43 @@ public class TennisGame {
     public void addOnePointToPlayer(String name) {
         Player player = this.getPlayerByName(name);
         player.winOnePoint();
-   }
+    }
 
-   public String getPlayerScore(Player player) {
-
-        Player opposite = this._players.get(_players.size() - player.getIndex() - 1);
+    public String getPlayerScore(Player player) {
         if (!player.hasAtLeastThreePoints()) {
             return _score[player.getWonPoints()];
         }
-        if (player.getWonPoints() > opposite.getWonPoints()) {
-            if (player.getWonPoints() - opposite.getWonPoints() == 1) {
-                return "Advantage";
-            } else {
-                return "40";
-            }
 
-        } else if (player.getWonPoints() < opposite.getWonPoints()) {
-            return "40";
-        } else {
-            return "Deuce";
+        if (isAdvantage(player)) return "Advantage";
+        if (isDeuce(player)) return "Deuce";
+
+        return "40";
+
+    }
+
+    private boolean isDeuce(Player player) {
+        if (!player.hasAtLeastThreePoints())
+            return false;
+
+        Player opposite = this._players.get(this._players.size()-player.getIndex()-1);
+        if (player.getWonPoints() == opposite.getWonPoints()) {
+            return true;
         }
-   }
+        return false;
+    }
 
-   public Player getPlayerByName(String name) {
+    private boolean isAdvantage(Player player) {
+        if (!player.hasAtLeastThreePoints())
+            return false;
+
+        Player opposite = this._players.get(this._players.size()-player.getIndex()-1);
+        if (player.getWonPoints() - opposite.getWonPoints() == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    public Player getPlayerByName(String name) {
         for (Player player : this._players) {
             if (player.getName().equals(name)) {
                 return player;
@@ -99,7 +113,7 @@ public class TennisGame {
 
 
         public void winOnePoint() {
-           _wonPoints++;
+            _wonPoints++;
         }
 
         public int getWonPoints() {
