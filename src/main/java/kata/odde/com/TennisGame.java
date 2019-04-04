@@ -37,7 +37,7 @@ public class TennisGame {
 
     private boolean isDeuce() {
         return firstPlayerPoints == secondPlayerPoints
-                && firstPlayerPoints == 3;
+                && firstPlayerPoints >= 3;
     }
 
     private boolean isAdvantage() {

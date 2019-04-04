@@ -37,4 +37,7 @@ Feature: Tennis game kata
             |   3   |   3   |   Deuce           |
             |   4   |   3   |   Advantage : 40  |
             |   3   |   4   |   40 : Advantage  |
+            |   5   |   6   |   40 : Advantage  |
+            |   6   |   5   |   Advantage : 40  |
+            |   5   |   5   |   Deuce           |
 
