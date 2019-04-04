@@ -12,6 +12,7 @@ Feature: Tennis game kata
             | number    | expected     |
             | 1         | 15 : Love    |
             | 2         | 30 : Love    |
+            | 3         | 40 : Love    |
 
 
 

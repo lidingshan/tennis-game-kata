@@ -5,14 +5,15 @@ public class TennisGame {
     private int firstPlayerPoints = 0;
 
     public String getScore() {
+        String firstPlayerScore = "Love";
         if (firstPlayerPoints == 1) {
-            score = "15 : Love";
+            firstPlayerScore = "15";
         } else if (firstPlayerPoints == 2) {
-            score = "30 : Love";
+            firstPlayerScore = "30";
+        } else if (firstPlayerPoints == 3) {
+            firstPlayerScore = "40";
         }
-        else {
-            score = "Love : Love";
-        }
+        this.score = firstPlayerScore + " : Love";
         return score;
     }
 
