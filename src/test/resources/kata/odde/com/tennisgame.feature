@@ -32,7 +32,8 @@ Feature: Tennis game kata
         Then the score should be "<expected>"
 
         Examples:
-            |   X   |   Y   |   expected    |
-            |   1   |   1   |   15 : 15     |
-            |   3   |   3   |   Deuce       |
+            |   X   |   Y   |   expected        |
+            |   1   |   1   |   15 : 15         |
+            |   3   |   3   |   Deuce           |
+            |   4   |   3   |   Advantage : 40  |
 

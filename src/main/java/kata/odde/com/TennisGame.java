@@ -17,14 +17,19 @@ public class TennisGame {
     }
 
     public String getScore() {
-        String firstPlayerScore = scoreMap.get(firstPlayerPoints);
-        String secondPlayerScore = scoreMap.get(secondPlayerPoints);
+        if (firstPlayerPoints > 3
+                && firstPlayerPoints - secondPlayerPoints == 1) {
+            this.score = "Advantage : 40";
+        } else {
+            String firstPlayerScore = scoreMap.get(firstPlayerPoints);
+            String secondPlayerScore = scoreMap.get(secondPlayerPoints);
 
-        this.score = firstPlayerScore + " : " + secondPlayerScore;
+            this.score = firstPlayerScore + " : " + secondPlayerScore;
 
-        if (firstPlayerPoints == secondPlayerPoints
-                && firstPlayerPoints == 3) {
-            this.score = "Deuce";
+            if (firstPlayerPoints == secondPlayerPoints
+                    && firstPlayerPoints == 3) {
+                this.score = "Deuce";
+            }
         }
 
         return score;
