@@ -17,22 +17,33 @@ public class TennisGame {
     }
 
     public String getScore() {
-        if (firstPlayerPoints > 3
-                && firstPlayerPoints - secondPlayerPoints == 1) {
-            this.score = "Advantage : 40";
-        } else {
+        if (isAdvantage()) {
+            this.score = firstPlayerPoints > secondPlayerPoints
+                    ? "Advantage : 40" : "40 : Advantage";
+        }
+        else if (isDeuce()) {
+            this.score = "Deuce";
+        }
+        else {
             String firstPlayerScore = scoreMap.get(firstPlayerPoints);
             String secondPlayerScore = scoreMap.get(secondPlayerPoints);
 
             this.score = firstPlayerScore + " : " + secondPlayerScore;
 
-            if (firstPlayerPoints == secondPlayerPoints
-                    && firstPlayerPoints == 3) {
-                this.score = "Deuce";
-            }
         }
 
         return score;
+    }
+
+    private boolean isDeuce() {
+        return firstPlayerPoints == secondPlayerPoints
+                && firstPlayerPoints == 3;
+    }
+
+    private boolean isAdvantage() {
+
+        return Math.abs(firstPlayerPoints - secondPlayerPoints) == 1
+                && (firstPlayerPoints > 3 || secondPlayerPoints > 3);
     }
 
     public void firstPlayerGetAPoint() {
