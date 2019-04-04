@@ -3,6 +3,7 @@ package kata.odde.com;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.junit.Assert;
 
 public class TennisGameSteps {
@@ -14,8 +15,14 @@ public class TennisGameSteps {
     }
 
     @Then("^the score should be \"(.*?)\"$")
-    public void the_score_should_be(String arg1) throws Throwable {
-        Assert.assertEquals(arg1, game.getScore());
+    public void the_score_should_be(String expected) throws Throwable {
+        Assert.assertEquals(expected, game.getScore());
     }
 
+    @When("^first player got (\\d+) of points$")
+    public void first_player_got_point(int points) throws Throwable {
+        for (int i = 0; i < points; i++) {
+            game.firstPlayerGetAPoint();
+        }
+    }
 }
