@@ -25,4 +25,12 @@ public class TennisGameSteps {
             game.firstPlayerGetAPoint();
         }
     }
+
+    @When("^second player got (\\d+) of points$")
+    public void second_player_got_of_points(int points) throws Throwable {
+        for (int i = 0; i < points; i++) {
+            game.secondPlayerGetAPoint();
+        }
+    }
+
 }
