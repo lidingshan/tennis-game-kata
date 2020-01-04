@@ -1,22 +1,22 @@
-group 'odde.com'
+plugins {
+    id 'java'
+    id 'com.adarshr.test-logger' version '2.0.0'
+}
+
+group 'learning.kata'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11',
-            'info.cukes:cucumber-java:1.1.8',
-            'info.cukes:cucumber-junit:1.1.8'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.5.2'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.14.0'
 }
 
 test {
-    testLogging {
-        showStandardStreams = true
-    }
+    useJUnitPlatform()
 }
